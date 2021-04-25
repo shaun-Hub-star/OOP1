@@ -8,12 +8,12 @@ public class Rational implements Scalar {
 
     }*/
     @Override
-    public Scalar addition(Scalar s) {
+    public Scalar add(Scalar s) {
         return null;
     }
 
     @Override
-    public Scalar multiplication(Scalar s) {
+    public Scalar mul(Scalar s) {
         return null;
     }
 
