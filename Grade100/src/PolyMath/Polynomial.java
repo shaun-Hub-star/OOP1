@@ -6,24 +6,24 @@ import java.util.List;
 public class Polynomial {
     private ArrayList<Monomial> poly;
 
-    public Polynomial(){
-        this.poly = new ArrayList<Monomial>();
+    public Polynomial(ArrayList<Monomial> list){
+        this.poly = list;
     }
 
 
     public static  Polynomial build(String input){
         String[] monomialList = input.split("\\s+");
-        Polynomial poly = new Polynomial();
+        ArrayList<Monomial> list = new ArrayList<Monomial>();
         //iterates on the list of strings
         int isNeg = 1;
         for(int i = 0; i < monomialList.length;i++){
             if(monomialList[i].contains("/")) {
-                poly.add(buildRationalMonomial(monomialList[i].split("/"),i));
+                list.add(buildRationalMonomial(monomialList[i].split("/"),i));
             }else{
-                poly.add(buildIntegerMonomial(monomialList[i],i));
+                list.add(buildIntegerMonomial(monomialList[i],i));
             }
         }
-        return poly;
+        return new Polynomial(list);
     }
 
 
