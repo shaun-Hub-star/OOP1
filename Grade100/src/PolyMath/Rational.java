@@ -41,14 +41,14 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
-        return null;
+        return s.addRational(this);
     }
 
     @Override
     public Scalar mul(Scalar s) {
-        return s.addRational(this);
+        return null;
     }
-    
+
     @Override
     public Scalar addRational(Rational s) {
         return new Rational(this.numerator*s.denominator + s.numerator*this.denominator,s.denominator*this.denominator,true);
@@ -62,7 +62,6 @@ public class Rational implements Scalar {
     @Override
     public Scalar mulRational(Rational s) {
         return new Rational(this.numerator*s.numerator,this.denominator*s.denominator,true);
-
     }
 
     @Override
@@ -78,7 +77,7 @@ public class Rational implements Scalar {
        int a = numerator;
        int denominator = this.denominator;
        int b = numerator;
-       //in a loop multiplys the values by the base numerator and denominator
+       //in a loop multiplies the values by the base numerator and denominator
 
         while(exponent > 1){
             numerator = numerator*a;
