@@ -2,8 +2,8 @@ package PolyMath;
 
 public interface Scalar {
 
-    public Scalar addition(Scalar s);
-    public Scalar multiplication(Scalar s);
+    public Scalar add(Scalar s);
+    public Scalar mull(Scalar s);
     public Scalar addRational(Rational s);
     public Scalar addInteger(Integer s);
     public Scalar mulRational(Rational s);

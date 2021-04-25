@@ -4,12 +4,12 @@ public class Integer implements Scalar {
     private int number;
 
     @Override
-    public Scalar addition(Scalar s) {
+    public Scalar add(Scalar s) {
         return null;
     }
 
     @Override
-    public Scalar multiplication(Scalar s) {
+    public Scalar mull(Scalar s) {
         return null;
     }
 
