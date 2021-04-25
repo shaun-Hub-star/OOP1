@@ -16,12 +16,14 @@ public class Integer implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
+
         return s.addInteger(this);
     }
 
     @Override
     public Scalar mul(Scalar s) {
         return s.mulInteger(this);
+
     }
 
     @Override
