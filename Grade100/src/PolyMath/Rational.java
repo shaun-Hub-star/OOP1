@@ -41,22 +41,14 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
-<<<<<<< HEAD
         return null;
     }
 
     @Override
     public Scalar mul(Scalar s) {
-=======
         return s.addRational(this);
     }
-
-    @Override
-    public Scalar mull(Scalar s) {
->>>>>>> a770e47a7ba08cf9b1b1ff3e0aa306efbb0ae45a
-        return null;
-    }
-
+    
     @Override
     public Scalar addRational(Rational s) {
         return new Rational(this.numerator*s.denominator + s.numerator*this.denominator,s.denominator*this.denominator,true);
