@@ -1,19 +1,24 @@
 package PolyMath;
+
 import java.util.*;
+
 public class Rational implements Scalar {
     private int numerator;
     private int denominator;
 
 
-   public Rational(int numerator,int denominator,boolean toReduce){
+    public Rational(int numerator, int denominator) {
+        if (denominator == 0) throw new ArithmeticException("try to divide by zero");
+        if (numerator < 0 && denominator < 0) {
+            numerator *= -1;
+            denominator *= -1;
+        }
         this.numerator = numerator;
         this.denominator = denominator;
-        if(toReduce){
-            Rational reduced = reduce();
-            this.numerator = reduced.getNumerator();
-            this.denominator = reduced.getDenominator();
+        if (denominator < 0) {//controlling the negative sign in the numerator
+            this.numerator *= -1;
+            this.numerator *= -1;
         }
-
     }
 
     public int getDenominator() {
@@ -25,18 +30,19 @@ public class Rational implements Scalar {
     }
 
 
-    public int reduceRecursion(int a,int b) {
+    public int reduceRecursion(int a, int b) {
         if (b == 0) {
             return a;
         }
         return reduceRecursion(b, a % b);
     }
-    public Rational reduce(){
+
+    public Rational reduce() {
         int a = this.numerator;
         int b = this.denominator;
-        int biggestDevider = reduceRecursion(a,b);
+        int biggestDivider = reduceRecursion(a, b);
 
-        return new Rational(numerator/biggestDevider, denominator/biggestDevider,false);
+        return new Rational(numerator / biggestDivider, denominator / biggestDivider);
     }
 
     @Override
@@ -46,53 +52,58 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar mul(Scalar s) {
-        return null;
+        return s.mulRational(this);
     }
 
     @Override
     public Scalar addRational(Rational s) {
-        return new Rational(this.numerator*s.denominator + s.numerator*this.denominator,s.denominator*this.denominator,true);
+        return new Rational(this.numerator * s.denominator + s.numerator * this.denominator, s.denominator * this.denominator).reduce();
     }
 
     @Override
     public Scalar addInteger(Integer s) {
-       return new Rational(this.numerator + s.getNumber() * this.denominator, denominator,true);
+        return new Rational(this.numerator + s.getNumber() * this.denominator, denominator).reduce();
     }
 
     @Override
     public Scalar mulRational(Rational s) {
-        return new Rational(this.numerator*s.numerator,this.denominator*s.denominator,true);
+
+        return new Rational(this.numerator * s.numerator, this.denominator * s.denominator).reduce();
+
     }
 
     @Override
     public Scalar mulInteger(Integer s) {
-        return new Rational(this.numerator*s.getNumber(),this.denominator,true);
+        return new Rational(this.numerator * s.getNumber(), this.denominator).reduce();
     }
 
     @Override
     public Scalar power(int exponent) {
-       if(exponent == 0)
-           return new Rational(1,1,false);
-       int numerator = this.numerator;
-       int a = numerator;
-       int denominator = this.denominator;
-       int b = numerator;
-       //in a loop multiplies the values by the base numerator and denominator
+        if (exponent == 0)
+            return new Rational(1, 1);
+        int numerator = this.numerator;
+        int a = numerator;
+        int denominator = this.denominator;
+        int b = numerator;
+        //in a loop multiplies the values by the base numerator and denominator
 
-        while(exponent > 1){
-            numerator = numerator*a;
-            denominator = denominator*b;
+        while (exponent > 1) {
+            numerator = numerator * a;
+            denominator = denominator * b;
+            exponent -= 1;
         }
-        return new Rational(numerator,denominator,true);
+        return new Rational(numerator, denominator).reduce();
     }
 
     @Override
     public Scalar neg() {
-        return new Rational(-this.numerator,this.denominator,false);
+        return new Rational(-this.numerator, this.denominator);
     }
 
     @Override
-    public int sign() {
-        return this.numerator/Math.abs(this.numerator);
+    public int sign() {//checking only numerator because we mange the negative sign only at the numerator
+        if (numerator > 0) return 1;
+        else if (numerator == 0) return 0;
+        else return -1;
     }
 }
