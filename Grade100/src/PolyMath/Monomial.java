@@ -35,6 +35,7 @@ public class Monomial {
 
     public Monomial derivative() {
         if (this.exponent == 0) return new Monomial(0, new Integer(0));
+
         return new Monomial(this.exponent - 1, this.coefficient.mul(new Integer(this.exponent)));
     }
 
@@ -54,13 +55,16 @@ public class Monomial {
         String real=this.coefficient.toString();
         if(real.equals("0"))
             return "0";
-        else if((!real.equals("1"))&&(!real.equals(-1))){
+        else if((!real.equals("1"))&&(!real.equals("-1"))){
             coeff=real;
         }
         else if(real.equals("-1")){
             if(this.exponent==0)
                 exp="1";
             coeff="-";
+        }
+        else if(real.equals("1")&exp.equals("")){
+            coeff=real;
         }
 
         return coeff+exp;

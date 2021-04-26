@@ -57,11 +57,11 @@ public class Polynomial {
             if (poly.size() > i) p1 = poly.get(i);//if there is a bug its probably in the indexes
             if (p.poly.size() > i) p2 = p.poly.get(i);
 
-            if (p1 != null && p2 != null) addition.poly.add(p1.add(p2).getExponent(),p1.add(p2));
-            else if (p != null) {
-                addition.poly.add(p1.getExponent(),p1);
+            if (p1 != null && p2 != null) addition.poly.add(p1.add(p2).getExponent(), p1.add(p2));
+            else if (p1 != null) {
+                addition.poly.add(p1.getExponent(), p1);
             } else {
-                addition.poly.add(p2.getExponent(),p2);
+                addition.poly.add(p2.getExponent(), p2);
             }
         }
         return addition;
@@ -69,10 +69,18 @@ public class Polynomial {
 
     public Polynomial mul(Polynomial p) {//there is a bug
         Polynomial multiply = new Polynomial();
-        for (int i = 0; i < poly.size(); i++) {
-            for (int j = 0; j < p.poly.size(); j++) {
-                Monomial m = poly.get(i).mult(p.poly.get(j));
-                multiply.poly.add(m.getExponent(), m);
+        for (int i = 0; i < this.poly.size(); i++) {//first polynomial
+            for (int j = 0; j < p.poly.size(); j++) {//second polynomial
+                Monomial multiplication = this.poly.get(i).mult(p.poly.get(j));
+
+                Monomial mono = null;
+                try {
+                    mono = multiply.poly.get(multiplication.getExponent());
+                    multiply.poly.remove(mono.getExponent());
+                    multiply.poly.add(multiplication.getExponent(), mono.add(multiplication));
+                } catch (Exception e) {
+                    multiply.poly.add(multiplication.getExponent(), multiplication);
+                }
             }
         }
         return multiply;
@@ -97,9 +105,11 @@ public class Polynomial {
     public String toString() {
         String s = "";
         for (Monomial p : poly) {
-            if (p.sign() == 1) s += "+" + p.toString();
+            if (p.sign() == 1 && s.length() == 0) s += p.toString();
+            else if (p.sign() == 1) s += "+" + p.toString();
             else if (p.sign() == -1) s += p.toString();
         }
+        if (s.length() == 0) s = "0";
         return s;
     }
 

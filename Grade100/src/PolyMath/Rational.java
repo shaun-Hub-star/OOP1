@@ -83,7 +83,7 @@ public class Rational implements Scalar {
         int numerator = this.numerator;
         int a = numerator;
         int denominator = this.denominator;
-        int b = numerator;
+        int b = denominator;
         //in a loop multiplies the values by the base numerator and denominator
 
         while (exponent > 1) {
@@ -107,6 +107,8 @@ public class Rational implements Scalar {
     }
 
     public String toString() {
-        return this.numerator + "/" + this.denominator;
+        if (this.denominator == 1) return this.numerator + "";
+        else
+            return this.numerator + "/" + this.denominator;
     }
 }
