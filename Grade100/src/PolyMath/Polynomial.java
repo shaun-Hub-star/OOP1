@@ -57,17 +57,17 @@ public class Polynomial {
             if (poly.size() > i) p1 = poly.get(i);//if there is a bug its probably in the indexes
             if (p.poly.size() > i) p2 = p.poly.get(i);
 
-            if (p1 != null && p2 != null) addition.poly.add(p1.add(p2));
+            if (p1 != null && p2 != null) addition.poly.add(p1.add(p2).getExponent(),p1.add(p2));
             else if (p != null) {
-                addition.poly.add(p1);
+                addition.poly.add(p1.getExponent(),p1);
             } else {
-                addition.poly.add(p2);
+                addition.poly.add(p2.getExponent(),p2);
             }
         }
         return addition;
     }
 
-    public Polynomial mul(Polynomial p) {
+    public Polynomial mul(Polynomial p) {//there is a bug
         Polynomial multiply = new Polynomial();
         for (int i = 0; i < poly.size(); i++) {
             for (int j = 0; j < p.poly.size(); j++) {

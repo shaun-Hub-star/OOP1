@@ -9,16 +9,15 @@ public class Rational implements Scalar {
 
     public Rational(int numerator, int denominator) {
         if (denominator == 0) throw new ArithmeticException("try to divide by zero");
-        if (numerator < 0 && denominator < 0) {
-            numerator *= -1;
-            denominator *= -1;
+
+        if (numerator < 0 && denominator < 0 || denominator < 0) {
+            this.numerator = numerator * -1;
+            this.denominator = denominator * -1;
+        } else {
+            this.numerator = numerator;
+            this.denominator = denominator;
         }
-        this.numerator = numerator;
-        this.denominator = denominator;
-        if (denominator < 0) {//controlling the negative sign in the numerator
-            this.numerator *= -1;
-            this.numerator *= -1;
-        }
+
     }
 
     public int getDenominator() {
@@ -105,5 +104,9 @@ public class Rational implements Scalar {
         if (numerator > 0) return 1;
         else if (numerator == 0) return 0;
         else return -1;
+    }
+
+    public String toString() {
+        return this.numerator + "/" + this.denominator;
     }
 }
