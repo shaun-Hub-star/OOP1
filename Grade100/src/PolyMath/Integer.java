@@ -85,12 +85,12 @@ public class Integer implements Scalar {
     public Scalar power(int exponent) {
 
         if (exponent < 0) {
+            if (this.sign() == 0 ) throw new ArithmeticException("Divide by zero violation");
             int base = this.getNumber();
             Rational inverse = new Rational(1, base);
             return inverse.power(-exponent);
         }
 
-        if (this.sign() == 0 & exponent == 0) throw new ArithmeticException("Divide by zero violation");
 
         Scalar pow = new Integer(1);
 

@@ -80,19 +80,9 @@ class IntegerTest {
         assertEquals(a.power(-1).toString(), "1/5");
     }
 
-    @Test
-    void power2() {
-        boolean flag = false;
-        try {
-            c.power(0);
-        } catch (Exception e) {
-            flag = true;
-        }
-        if (!flag) fail();
-    }
 
     @Test
-    void power3() {
+    void power2() {
         assertEquals(b.power(-1).toString(), "-1/5");
     }
 

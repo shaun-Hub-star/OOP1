@@ -128,10 +128,8 @@ public class Rational implements Scalar {
     @Override
     public Scalar power(int exponent) {
         if (exponent == 0)
-            if (this.sign() != 0)
-                return new Rational(1, 1);
-            else if(this.sign()==0)
-                throw new ArithmeticException("divide by zero violation ");
+            return new Rational(1, 1);
+
 
         int numerator = this.numerator;
         int a = numerator;

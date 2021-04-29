@@ -28,7 +28,7 @@ public class MonomialTest {
 
         String test[] = {add1.toString(), add2.toString(), add3.toString(), add4.toString()};
         String expected[] = {"0", "2x^2", "3x^2", "0"};
-        assertArrayEquals(test, expected);
+        assertArrayEquals(expected,test);
 
 
     }
@@ -40,7 +40,7 @@ public class MonomialTest {
         Monomial mul4 = m5.mult(m6);
         String test[] = {mul1.toString(), mul2.toString(), mul3.toString(), mul4.toString()};
         String expected[] = {"0", "x^4", "2x^4", "-x^18"};
-        assertArrayEquals(test, expected);
+        assertArrayEquals(expected,test);
     }
     @Test
     void testDerv() {
@@ -53,7 +53,7 @@ public class MonomialTest {
         Monomial der7 = m7.derivative();
         String test[] = {der1.toString(), der2.toString(), der3.toString(), der4.toString(), der5.toString(), der6.toString(), der7.toString()};
         String expected[] = {"0", "2x", "4x", "70x^6", "-9x^8", "9x^8", "0"};
-        assertArrayEquals(test, expected);
+        assertArrayEquals(expected,test);
 
     }
     @Test
@@ -66,5 +66,6 @@ public class MonomialTest {
         Scalar c6 = m7.evaluate(new Rational(8, 16));
         String test[] = {c1.toString(), c2.toString(), c3.toString(), c4.toString(), c5.toString(), c6.toString()};
         String expected[] = {"0", "1/4", "-5/64", "-1", "-1", "7"};
+        assertArrayEquals(expected,test);
     }
 }

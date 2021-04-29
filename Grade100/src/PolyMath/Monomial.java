@@ -51,7 +51,7 @@ public class Monomial {
      * @return
      */
     public Scalar evaluate(Scalar s) {
-
+        //if(s.sign()==0)return this.coefficient.mulInteger(new Integer(0));
         return this.coefficient.mul(s.power(this.exponent));
     }
 

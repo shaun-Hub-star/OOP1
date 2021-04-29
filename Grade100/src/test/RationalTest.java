@@ -80,16 +80,5 @@ class RationalTest {
         if (flag) fail();
     }
 
-    @Test
-    void power2() {
-        boolean flag = true;
-        try {
-            r2.power(0);
-        } catch (Exception e) {
-            flag = false;
-        }
-
-        if (flag) fail();
-    }
 
 }
