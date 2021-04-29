@@ -34,38 +34,38 @@ class RationalTest {
     @Test
     void reduce() {
         Rational s = new Rational(-4, 8);
-        assertEquals(s.reduce().toString(), "-1/2");
+        assertEquals("-1/2",s.reduce().toString());
     }
 
 
     @Test
     void add() {
-        assertEquals(r3.add(r4).toString(), "0");
+        assertEquals("0",r3.add(r4).toString());
     }
 
     @Test
     void mul() {
-        assertEquals(r3.mul(r4).toString(), "-1/9");
+        assertEquals("-1/9",r3.mul(r4).toString());
     }
 
     @Test
     void addRational() {
-        assertEquals(r3.addRational((Rational) r4).toString(), "0");
+        assertEquals("0",r3.addRational((Rational) r4).toString());
     }
 
     @Test
     void addInteger() {
-        assertEquals(r2.addInteger(new Integer(3)).toString(), "3");
+        assertEquals("3",r2.addInteger(new Integer(3)).toString());
     }
 
     @Test
     void mulRational() {
-        assertEquals(r3.mulRational((Rational) r4).toString(), "-1/9");
+        assertEquals("-1/9",r3.mulRational((Rational) r4).toString());
     }
 
     @Test
     void mulInteger() {
-        assertEquals(r2.mulInteger(new Integer(3)).toString(), "0");
+        assertEquals("0",r2.mulInteger(new Integer(3)).toString());
     }
 
     @Test
