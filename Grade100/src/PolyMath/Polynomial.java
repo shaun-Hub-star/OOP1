@@ -3,14 +3,24 @@ package PolyMath;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class Polynomial {
     private ArrayList<Monomial> poly;
 
+    /**
+     * constructor:
+     */
     public Polynomial() {
         poly = new ArrayList<>();
     }
 
 
+    /**
+     * @param input
+     * @return
+     */
     public static Polynomial build(String input) {
         String[] monomialList = input.split("\\s+");
         ArrayList<Monomial> list = new ArrayList<Monomial>();
@@ -29,11 +39,19 @@ public class Polynomial {
 
     }
 
+    /**
+     * @param list
+     */
     private void addList(ArrayList<Monomial> list) {
         poly = list;
     }
 
 
+    /**
+     * @param array
+     * @param i
+     * @return
+     */
     public static Monomial buildRationalMonomial(String[] array, int i) {
         int numerator = java.lang.Integer.parseInt(array[0]);
         int denominator = java.lang.Integer.parseInt(array[1]);
@@ -42,6 +60,11 @@ public class Polynomial {
         return mono;
     }
 
+    /**
+     * @param numAsString
+     * @param i
+     * @return
+     */
     public static Monomial buildIntegerMonomial(String numAsString, int i) {
         int number = java.lang.Integer.parseInt(numAsString);
         Integer scalar = new Integer(number);
@@ -49,6 +72,10 @@ public class Polynomial {
         return mono;
     }
 
+    /**
+     * @param p
+     * @return
+     */
     public Polynomial add(Polynomial p) {
         Polynomial addition = new Polynomial();
         for (int i = 0; i < Math.max(p.poly.size(), poly.size()); i++) {
@@ -67,6 +94,10 @@ public class Polynomial {
         return addition;
     }
 
+    /**
+     * @param p
+     * @return
+     */
     public Polynomial mul(Polynomial p) {//there is a bug
         Polynomial multiply = new Polynomial();
         for (int i = 0; i < this.poly.size(); i++) {//first polynomial
@@ -86,6 +117,10 @@ public class Polynomial {
         return multiply;
     }
 
+    /**
+     * @param s
+     * @return
+     */
     public Scalar evaluate(Scalar s) {
         Scalar sum = new Rational(0, 1);
         for (Monomial p : poly) {
@@ -94,6 +129,9 @@ public class Polynomial {
         return sum;
     }
 
+    /**
+     * @return
+     */
     public Polynomial derivative() {
         Polynomial derivative = new Polynomial();
         for (Monomial p : this.poly) {
@@ -102,6 +140,9 @@ public class Polynomial {
         return derivative;
     }
 
+    /**
+     * @return
+     */
     public String toString() {
         String s = "";
         for (Monomial p : poly) {

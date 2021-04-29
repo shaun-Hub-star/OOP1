@@ -92,7 +92,7 @@ public class Calculator {
         printEval(p7, q, p7.evaluate(q));
         printEval(p8, q, p8.evaluate(q));
         printEval(p9, q, p9.evaluate(q));
-        q = new Rational(1, 1);
+        q = new Rational(1, 2);
         printEval(p5, q, p5.evaluate(q));
         printEval(p6, q, p6.evaluate(q));
         printEval(p7, q, p7.evaluate(q));
@@ -103,7 +103,7 @@ public class Calculator {
         //Derivate Tests
         printTitle("Testing derivative");
         printDerivate(p1, p1.derivative());
-      //  printDerivate(p2, p2.derivative());
+        printDerivate(p2, p2.derivative());
         printDerivate(p3, p3.derivative());
         printDerivate(p4, p4.derivative());
         printDerivate(p5, p5.derivative());
