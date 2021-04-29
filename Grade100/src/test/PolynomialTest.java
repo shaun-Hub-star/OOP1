@@ -22,6 +22,9 @@ class PolynomialTest {
 
     @Test
     void build() {
+        String[] stringArray = {"1/2+x","1-x^2+1/4x^4","5-2x^2","5","-2","1/2+x+8x^3","100x^2","-x","1/2x"};
+        String[] acualArray = {p1.toString(),p2.toString(),p3.toString(),p4.toString(),p5.toString(),p6.toString(),p7.toString(),p8.toString(),p9.toString()};
+        assertArrayEquals(stringArray,acualArray);
     }
 
     @Test
