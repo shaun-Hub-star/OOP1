@@ -26,28 +26,28 @@ class IntegerTest {
 
     @Test
     void add1() {
-        assertEquals(a.add(b).toString(), "0");
+        assertEquals("0",a.add(b).toString());
 
     }
 
     @Test
     void add2() {
-        assertEquals(b.add(c).toString(), "-5");
+        assertEquals("-5",b.add(c).toString());
     }
 
     @Test
     void mul1() {
-        assertEquals(a.mul(b).toString(), "-25");
+        assertEquals("-25",a.mul(b).toString());
     }
 
     @Test
     void mul2() {
-        assertEquals(a.mul(c).toString(), "0");
+        assertEquals("0",a.mul(c).toString());
     }
 
     @Test
     void mul3() {
-        assertEquals(b.mul(b).toString(), "25");
+        assertEquals("25",b.mul(b).toString());
     }
 
     @Test
@@ -62,28 +62,29 @@ class IntegerTest {
 
     @Test
     void addInteger() {
-        assertEquals(a.add(b).toString(), "0");
+        assertEquals("0",a.add(b).toString());
     }
 
     @Test
     void mulRational() {
-        assertEquals(a.mul(r).toString(), "-5/2");
+        assertEquals("-5/2",a.mul(r).toString());
     }
 
     @Test
     void mulInteger() {
-        assertEquals(a.mul(b).toString(), "-25");
+        assertEquals("-25",a.mul(b).toString());
     }
 
     @Test
     void power1() {
-        assertEquals(a.power(-1).toString(), "1/5");
+        assertEquals("1/5",a.power(-1).toString());
     }
 
 
-    @Test
+
     void power2() {
-        assertEquals(b.power(-1).toString(), "-1/5");
+        assertEquals("-1/5",b.power(-1).toString());
+
     }
 
 
