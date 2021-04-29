@@ -28,14 +28,6 @@ class PolynomialTest {
     }
 
     @Test
-    void buildRationalMonomial() {
-    }
-
-    @Test
-    void buildIntegerMonomial() {
-    }
-
-    @Test
     void add() {
         String[] test = {p1.add(p1).toString(), p1.add(p2).toString(), p2.add(p3).toString(), p3.add(p1).toString(), p4.add(p4).toString(), p5.add(p5).toString(), p5.add(p6).toString(), p6.add(p7).toString(), p7.add(p5).toString(), p8.add(p8).toString(), p9.add(p9).toString(), p8.add(p9).toString()};
         String expected[] = {"1+2x", "3/2+x-x^2+1/4x^4", "6-3x^2+1/4x^4", "11/2+x-2x^2", "10", "-4", "-3/2+x+8x^3", "1/2+x+100x^2+8x^3", "-2+100x^2", "-2x", "x", "-1/2x"};
