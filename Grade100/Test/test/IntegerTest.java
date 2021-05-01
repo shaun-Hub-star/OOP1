@@ -21,13 +21,11 @@ class IntegerTest {
         b = new Integer(-5);
         c = new Integer(0);
         r = new Rational(1, -2);
-
     }
 
     @Test
     void add1() {
         assertEquals("0",a.add(b).toString());
-
     }
 
     @Test
@@ -79,8 +77,6 @@ class IntegerTest {
     void power1() {
         assertEquals("1/5",a.power(-1).toString());
     }
-
-
 
     void power2() {
         assertEquals("-1/5",b.power(-1).toString());
